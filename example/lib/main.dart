@@ -70,16 +70,14 @@ class _MyHomePageState extends State<MyHomePage> {
               cardExpiry: expiryDate,
               cardHolderName: cardHolderName,
               cvv: cvv,
-              bankName: "Axis Bank",
               showBackSide: showBack,
-              frontBackground: CardBackgrounds.black,
-              backBackground: CardBackgrounds.white,
+              frontBackground: CardBackgrounds.grey,
+              backBackground: CardBackgrounds.grey,
               showShadow: true,
             ),
             SizedBox(
               height: 40,
             ),
-
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,

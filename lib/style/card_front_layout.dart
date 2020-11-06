@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class CardFrontLayout {
-  String bankName;
   String cardNumber;
   String cardExpiry;
   String cardHolderName;
@@ -11,8 +10,7 @@ class CardFrontLayout {
   Color textColor;
 
   CardFrontLayout(
-      {this.bankName = "",
-      this.cardNumber = "",
+      {this.cardNumber = "",
       this.cardExpiry = "",
       this.cardHolderName = "",
       this.cardTypeIcon,
@@ -22,10 +20,11 @@ class CardFrontLayout {
 
   Widget layout1() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
+      padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           SizedBox(
             height: 8,
@@ -33,19 +32,8 @@ class CardFrontLayout {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Container(
-                height: 30,
-                child: Center(
-                  child: Text(
-                    bankName,
-                    style: TextStyle(
-                        color: textColor,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ),
               Expanded(
                 child: Align(
                   alignment: Alignment.centerRight,
@@ -62,81 +50,98 @@ class CardFrontLayout {
             ],
           ),
           Expanded(
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: <Widget>[
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          cardNumber == null || cardNumber.isEmpty
-                              ? 'XXXX XXXX XXXX XXXX'
-                              : cardNumber,
-                          style: TextStyle(
-                              package: 'awesome_card',
-                              color: textColor,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: "MavenPro",
-                              fontSize: 22),
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              "Exp. Date",
-                              style: TextStyle(
-                                  package: 'awesome_card',
-                                  color: textColor,
-                                  fontFamily: "MavenPro",
-                                  fontSize: 15),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              cardExpiry == null || cardExpiry.isEmpty
-                                  ? "MM/YY"
-                                  : cardExpiry,
-                              style: TextStyle(
-                                  package: 'awesome_card',
-                                  color: textColor,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: "MavenPro",
-                                  fontSize: 16),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          cardHolderName == null || cardHolderName.isEmpty
-                              ? "Card Holder"
-                              : cardHolderName,
-                          style: TextStyle(
-                              package: 'awesome_card',
-                              color: textColor,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: "MavenPro",
-                              fontSize: 17),
-                        ),
-
-                      ],
-                    ),
-                    cardTypeIcon
-                  ],
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        cardNumber == null || cardNumber.isEmpty
+                            ? 'XXXX  XXXX  XXXX  XXXX'
+                            : cardNumber,
+                        style: TextStyle(
+                            package: 'awesome_card',
+                            color: textColor,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'Trenda',
+                            fontSize: 20),
+                      ),
+                      SizedBox(
+                        height: 0.8,
+                      ),
+                      Text(
+                        '1234',
+                        style: TextStyle(
+                            package: 'awesome_card',
+                            color: Colors.white.withOpacity(0.49),
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Trenda',
+                            fontSize: 10),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+                Expanded(
+                  flex: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Text(
+                        cardHolderName == null || cardHolderName.isEmpty
+                            ? "Card Holder"
+                            : cardHolderName,
+                        style: TextStyle(
+                            package: 'awesome_card',
+                            color: textColor,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'Trenda',
+                            fontSize: 18),
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'VALID\nTHRU',
+                            style: TextStyle(
+                                package: 'awesome_card',
+                                color: Colors.white.withOpacity(0.49),
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'Trenda',
+                                fontSize: 8),
+                          ),
+                          SizedBox(
+                            width: 6.0,
+                          ),
+                          Text(
+                            cardExpiry == null || cardExpiry.isEmpty
+                                ? "MM/YY"
+                                : cardExpiry,
+                            style: TextStyle(
+                                package: 'awesome_card',
+                                color: textColor,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: 'Trenda',
+                                fontSize: 18),
+                          ),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ],

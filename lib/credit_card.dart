@@ -9,7 +9,6 @@ class CreditCard extends StatefulWidget {
   final String cardNumber;
   final String cardExpiry;
   final String cardHolderName;
-  final String bankName;
   final String cvv;
   final Color frontTextColor;
   final Color backTextColor;
@@ -28,7 +27,6 @@ class CreditCard extends StatefulWidget {
       this.cardNumber,
       this.cardExpiry,
       this.cardHolderName,
-      this.bankName = "",
       this.cvv,
       this.showBackSide = false,
       @required this.frontBackground,
@@ -100,7 +98,7 @@ class _CreditCardState extends State<CreditCard>
         ? cardWidth = MediaQuery.of(context).size.width - 40
         : cardWidth = widget.width;
     widget.height == null
-        ? cardHeight = (cardWidth / 2) + 10
+        ? cardHeight = (cardWidth / 2) + 20
         : cardHeight = widget.height;
 
     if (widget.showBackSide) {
@@ -134,19 +132,19 @@ class _CreditCardState extends State<CreditCard>
         boxShadow: widget.showShadow
             ? [
                 BoxShadow(
-                  color: Colors.black,
+                  color: Colors.grey,
                   blurRadius: 12.0,
                   spreadRadius: 0.2,
                   offset: Offset(
                     3.0, // horizontal, move right 10
-                    3.0, // vertical, move down 10
+                    5.0, // vertical, move down 10
                   ),
                 )
               ]
             : [],
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(12.0),
         child: Stack(
           children: <Widget>[
             // Background for card
@@ -155,11 +153,11 @@ class _CreditCardState extends State<CreditCard>
             // Front Side Layout
             widget.frontLayout ??
                 CardFrontLayout(
-                        bankName: widget.bankName,
                         cardNumber: widget.cardNumber,
                         cardExpiry: widget.cardExpiry,
                         cardHolderName: widget.cardHolderName,
-                        cardTypeIcon: getCardTypeIcon(cardType: widget.cardType,
+                        cardTypeIcon: getCardTypeIcon(
+                            cardType: widget.cardType,
                             cardNumber: widget.cardNumber),
                         cardHeight: cardHeight,
                         cardWidth: cardWidth,
@@ -180,19 +178,19 @@ class _CreditCardState extends State<CreditCard>
         boxShadow: widget.showShadow
             ? [
                 BoxShadow(
-                  color: Colors.black45,
+                  color: Colors.grey,
                   blurRadius: 12.0,
                   spreadRadius: 0.2,
                   offset: Offset(
                     3.0, // horizontal, move right 10
-                    3.0, // vertical, move down 10
+                    5.0, // vertical, move down 10
                   ),
                 )
               ]
             : [],
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(12.0),
         child: Stack(
           children: <Widget>[
             // Background for card

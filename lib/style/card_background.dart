@@ -14,4 +14,10 @@ class CardBackgrounds {
     height: double.maxFinite,
     color: Color(0xffF9F9FA),
   );
+
+  static Widget grey = new Container(
+    width: double.maxFinite,
+    height: double.maxFinite,
+    color: Color(0xff9E9E9E),
+  );
 }
