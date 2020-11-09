@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class CardFrontLayout {
@@ -62,7 +63,7 @@ class CardFrontLayout {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
+                      AutoSizeText(
                         cardNumber == null || cardNumber.isEmpty
                             ? 'XXXX  XXXX  XXXX  XXXX'
                             : cardNumber,
@@ -72,6 +73,7 @@ class CardFrontLayout {
                             fontWeight: FontWeight.w700,
                             fontFamily: 'Trenda',
                             fontSize: 20),
+                        maxLines: 1,
                       ),
                       SizedBox(
                         height: 0.8,
